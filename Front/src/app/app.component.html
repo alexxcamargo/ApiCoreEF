@@ -1,0 +1,76 @@
+<div class="container">
+  <form class="form-style" [formGroup]="form">
+    <mat-card>
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input formControlName="nome" matInput placeholder="Nome" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>E-mail</mat-label>
+        <input formControlName="email" matInput placeholder="email@teste.com" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Login</mat-label>
+        <input formControlName="login" matInput placeholder="Login" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Senha</mat-label>
+        <input
+          formControlName="senha"
+          type="password"
+          matInput
+          placeholder="Senha"
+        />
+      </mat-form-field>
+      <button
+      mat-raised-button color="primary"
+        type="submit"
+        (click)="onSubmit()"
+        [disabled]="!form.valid"
+      >
+        Gravar
+      </button>
+    </mat-card>
+  </form>
+
+  <div class="data">
+    <mat-card class="data-table" >
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.idUser}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="login">
+          <mat-header-cell *matHeaderCellDef> Login </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.login}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="editar">
+          <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <button  mat-raised-button color="accent" (click)="editUser(element)">Editar</button> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="excluir">
+          <mat-header-cell *matHeaderCellDef> Excluir </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <button  mat-raised-button color="warn" (click)="deleteUser(element)">Excluir</button> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="senha">
+          <mat-header-cell *matHeaderCellDef> Senha </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.senha}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>
