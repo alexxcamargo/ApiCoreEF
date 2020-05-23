@@ -13,8 +13,13 @@ namespace ApiCoreEF.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Integrated Security=SSPI;Persist Security Info=False;User ID=admin;Initial Catalog=dbWebApi;Data Source=localhost\\SQLEXPRESS");
-            
+            optionsBuilder.UseSqlServer(@"Integrated Security=SSPI;Persist Security Info=False;User ID=admin;Initial Catalog=dbWebApi;Data Source=localhost\SQLEXPRESS");            
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
