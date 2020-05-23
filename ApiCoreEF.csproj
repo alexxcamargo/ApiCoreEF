@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Front\**" />
+    <Content Remove="Front\**" />
+    <EmbeddedResource Remove="Front\**" />
+    <None Remove="Front\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20200522154806_initial.cs" />
     <Compile Remove="Migrations\20200522154806_initial.Designer.cs" />
     <Compile Remove="Migrations\20200522154933_initial.cs" />
